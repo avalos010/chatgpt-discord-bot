@@ -10,6 +10,9 @@
     "delete-all-commands": "node delete-commands.cjs",
     "deploy-commands": "node deploy-commands.js"
   },
+  "engines": {
+    "node": ">=18"
+  },
   "author": "Jluis Avalos",
   "license": "ISC",
   "dependencies": {
