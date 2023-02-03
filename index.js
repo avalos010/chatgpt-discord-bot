@@ -1,7 +1,15 @@
-const fs = require("node:fs");
-const path = require("node:path");
-const { Client, GatewayIntentBits, Collection, Events } = require("discord.js");
-const { config } = require("dotenv");
+import fs from "node:fs";
+// import path from "node:path";
+import { Client, GatewayIntentBits, Collection, Events } from "discord.js";
+import { config } from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+config();
+
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -19,7 +27,7 @@ const commandFiles = fs
 
 for (const file of commandFiles) {
   const filePath = path.join(commandsPath, file);
-  const command = require(filePath);
+  const command = await import(filePath);
   // Set a new item in the Collection with the key as the command name and the value as the exported module
   if ("data" in command && "execute" in command) {
     client.commands.set(command.data.name, command);

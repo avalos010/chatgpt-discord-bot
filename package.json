@@ -3,10 +3,11 @@
   "version": "0.0.1",
   "description": "enable using chatgpt in discord servers",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx nodemon index.js",
-    "delete-all-commands": "node delete-commands.js",
+    "delete-all-commands": "node delete-commands.cjs",
     "deploy-commands": "node deploy-commands.js"
   },
   "author": "Jluis Avalos",
