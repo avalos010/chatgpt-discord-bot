@@ -1,6 +1,12 @@
 import fs from "node:fs";
 // import path from "node:path";
-import { Client, GatewayIntentBits, Collection, Events } from "discord.js";
+import {
+  Client,
+  GatewayIntentBits,
+  Collection,
+  Events,
+  ActivityType,
+} from "discord.js";
 import { config } from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -40,10 +46,11 @@ for (const file of commandFiles) {
 
 client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
+  client.user.setActivity("The Chuch Squad", { type: ActivityType.Watching });
 });
 
-client.on("message", async (message) => {
-  console.log(message);
+client.on("message", (message) => {
+  console.log(message, "meesa");
 });
 
 client.on(Events.InteractionCreate, async (interaction) => {
