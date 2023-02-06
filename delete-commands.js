@@ -1,7 +1,7 @@
-const { REST, Routes } = require("discord.js");
-const { config } = require("dotenv");
-config();
+import { REST, Routes } from "discord.js";
+import { config } from "dotenv";
 
+config();
 const rest = new REST({ version: "10" }).setToken(process.env.CLIENT_TOKEN);
 
 // ...
