@@ -1,5 +1,5 @@
 import { SlashCommandBuilder } from "discord.js";
-import ask from "../chatgpt.js";
+import { runCompletion } from "../chatgpt.js";
 
 export const data = new SlashCommandBuilder()
   .setName("ask")
@@ -14,7 +14,7 @@ export const data = new SlashCommandBuilder()
 export async function execute(interaction) {
   await interaction.deferReply();
   const question = interaction.options._hoistedOptions[0].value;
-  await ask(question).then((ans) =>
-    interaction.editReply(`${question}\n ${ans}`)
-  );
+  await runCompletion(question).then((ans) => {
+    interaction.editReply(`${question}\n ${ans}`);
+  });
 }
