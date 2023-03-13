@@ -11,9 +11,13 @@ export const data = new SlashCommandBuilder()
   );
 
 export async function execute(interaction) {
+  interaction;
   await interaction.deferReply();
   const description = interaction.options._hoistedOptions[0].value;
-  await createImage(description).then((url) => {
-    interaction.editReply(`${description}\n ${url}`);
-  });
+  let images = "";
+  await createImage(description)
+    .then((urls) => {
+      urls.forEach((url) => (images += `${description}\n ${url}\n`));
+    })
+    .then(() => interaction.editReply(images));
 }

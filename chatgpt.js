@@ -4,9 +4,11 @@ export async function runCompletion(question) {
   const completion = await openai.createCompletion({
     model: "text-davinci-003",
     prompt: question,
+    max_tokens: 64,
+    temperature: 0.5,
+    stop: null,
+    echo: true,
   });
-
-  console.log(completion.data);
 
   return completion.data.choices[0].text;
 }
@@ -19,6 +21,8 @@ export async function createImage(description) {
     size: "1024x1024",
   });
 
-  const url = completion.data.data[0].url;
-  return url;
+  const urls = completion.data.data.map((d) => d.url);
+  return urls;
 }
+
+// runCompletion("How much is gas in ohio?");
