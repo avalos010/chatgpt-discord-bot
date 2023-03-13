@@ -13,11 +13,11 @@ export async function runCompletion(question) {
   return completion.data.choices[0].text;
 }
 
-export async function createImage(description) {
+export async function createImage(description, qty = 1) {
   const completion = await openai.createImage({
     response_format: "url",
     prompt: description,
-    n: 3,
+    n: qty,
     size: "1024x1024",
   });
 
