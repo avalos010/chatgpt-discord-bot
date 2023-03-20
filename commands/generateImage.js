@@ -18,12 +18,10 @@ export const data = new SlashCommandBuilder()
   );
 
 export async function execute(interaction) {
-  interaction;
   await interaction.deferReply();
   const description = interaction.options._hoistedOptions[0].value;
-  const qty = interaction.options._hoistedOptions[1].value;
   let images = "";
-  await createImage(description, qty)
+  await createImage(description)
     .then((urls) => {
       urls.forEach((url) => (images += `${description}\n ${url}\n`));
     })
