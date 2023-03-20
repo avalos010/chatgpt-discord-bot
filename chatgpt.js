@@ -4,8 +4,9 @@ export async function runCompletion(question) {
   const completion = await openai.createCompletion({
     model: "text-davinci-003",
     prompt: question,
-    max_tokens: 64,
-    temperature: 0.5,
+    max_tokens: 1000,
+    temperature: 0.9,
+    top_p: 1,
     stop: null,
     echo: true,
   });

@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx nodemon index.js",
+    "start": "node index.js",
+    "start::nodemon": "npx nodemon index.js",
     "delete-all-commands": "node delete-commands.cjs",
     "deploy-commands": "node deploy-commands.js"
   },
