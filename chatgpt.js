@@ -2,7 +2,7 @@ import { openai } from "./openai.js";
 
 export async function runCompletion(question) {
   const completion = await openai.createCompletion({
-    model: "gpt-4", //I have access to the beta version of gpt-4. use "text-davinci-003" for the public version
+    model: "text-davinci-003",
     prompt: question,
     max_tokens: 1000,
     temperature: 0.9,
@@ -16,7 +16,6 @@ export async function runCompletion(question) {
 
 export async function createImage(description) {
   const completion = await openai.createImage({
-    model: "gpt-4", //I have access to the beta version of gpt-4 use "text-davinci-003" for the public version
     response_format: "url",
     prompt: description,
     n: 1,
